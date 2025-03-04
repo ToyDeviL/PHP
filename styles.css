@@ -1,0 +1,300 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --bg-color-light: #f4f4f9;
+    --bg-color-dark: #181818;
+    --text-color-light: #333;
+    --text-color-dark: #f4f4f9;
+    --primary-color: #6200ea;
+    --secondary-color: #03dac6;
+    --highlight-color: #bb86fc;
+    --border-color-light: #ddd;
+    --border-color-dark: #333;
+    --button-color-light: #6200ea;
+    --button-color-dark: #03dac6;
+}
+
+[data-theme="light"] {
+    --bg-color: var(--bg-color-light);
+    --text-color: var(--text-color-light);
+    --border-color: var(--border-color-light);
+    --button-color: var(--button-color-light);
+    --icon-content: "\2600"; /* Unicode for sun symbol */
+}
+
+[data-theme="dark"] {
+    --bg-color: var(--bg-color-dark);
+    --text-color: var(--text-color-dark);
+    --border-color: var(--border-color-dark);
+    --button-color: var(--button-color-dark);
+    --icon-content: "\1F319"; /* Unicode for crescent moon symbol */
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    min-height: 100vh;
+    position: relative;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.theme-toggle {
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--button-color);
+    transition: color 0.3s, transform 0.2s;
+    margin-bottom: 10px;
+}
+
+.theme-toggle:hover {
+    color: var(--highlight-color);
+    transform: scale(1.1);
+}
+
+.theme-toggle i,
+.logout-button i {
+    margin-right: 0;
+}
+
+.theme-toggle:after {
+    content: var(--icon-content);
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: var(--bg-color);
+    padding: 20px;
+    border-right: 1px solid var(--border-color);
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.sidebar-bottom {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.logout-button {
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--button-color);
+    transition: color 0.3s, transform 0.2s;
+}
+
+.logout-button:hover {
+    color: var(--highlight-color);
+    transform: scale(1.1);
+}
+
+.content {
+    margin-left: 250px;
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dashboard-container,
+.login-container,
+.modal {
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 100%;
+    max-width: 800px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dashboard-container:hover,
+.login-container:hover,
+.modal:hover {
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+    width: 100%;
+}
+
+.form-group {
+    width: 100%;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    width: 100%;
+    max-width: 300px;
+}
+
+input[type="email"],
+input[type="password"],
+input[type="text"],
+input[type="number"],
+input[type="date"],
+textarea {
+    width: 100%;
+    max-width: 300px;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    transition: border-color 0.3s;
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="date"]:focus,
+textarea:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+button,
+.button-primary {
+    background-color: var(--button-color);
+    color: var(--text-color);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+    margin: 10px 0;
+    width: 100%;
+    max-width: 200px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+button:hover,
+.button-primary:hover {
+    background-color: var(--highlight-color);
+    transform: scale(1.05);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+button:active,
+.button-primary:active {
+    transform: scale(0.95);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.dashboard-container,
+.login-container {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th,
+td {
+    padding: 10px;
+    border: 1px solid var(--border-color);
+}
+
+th {
+    background-color: var(--primary-color);
+    color: var(--text-color-dark);
+}
+
+td {
+    text-align: center;
+}
+
+.button-danger {
+    background-color: red;
+    color: white;
+}
+
+.button-danger:hover {
+    background-color: darkred;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: var(--bg-color);
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid var(--border-color);
+    width: 80%;
+    max-width: 800px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.close {
+    color: var(--text-color);
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: var(--highlight-color);
+    text-decoration: none;
+    cursor: pointer;
+}
